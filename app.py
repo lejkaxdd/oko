@@ -80,23 +80,17 @@ def interactwithdb():
             port=3306,
             database='weapons'
             )
-            if conn:
-                app.logger.info('[%s] [INFO] from %s [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr)
-            else:
-                app.logger.error('[%s] [ERROR] from %s [CONNECT|INSERT] [MARIADB] [Failed] can\'t connect to mariadb', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr)    
             cur = conn.cursor()
             insert_data = f'insert into ship_weapon (zavod_name, weapon_name, serial_number) values ("{factory_name}","{weapon_name}", "{serial_number}");'
             cur.execute(insert_data)
             conn.commit()
             cur.close()
+            sync = os.popen('sync')
             app.logger.info('[%s] [INFO] from %s req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <%s> serial number <%s>', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, weapon_name, serial_number)
-            #except:
-            #   app.logger.error('[%s] [ERROR] from %s req:/dblogin [INSERT] [MARIADB] [Failed] Failed to add record: weapon name <%s> serial number <%s>', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, weapon_name, serial_number)    
+            app.logger.error('[%s] [ERROR] from %s req:/dblogin [INSERT] [MARIADB] [Failed] Failed to add record: weapon name <%s> serial number <%s>', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, weapon_name, serial_number)    
             global weapon_counter
             weapon_counter += 1
             return (f'Please check it with Factory_name: {factory_name}')
-            #except:
-             #   return (f'Uuuuppss something get wrong')
                 
         
         elif auth is not None:
@@ -109,7 +103,10 @@ def interactwithdb():
                 port=3306,
                 database='weapons'
             )
-            app.logger.info('[%s] [INFO] from %s [CONNECT|AUTH] [MARIADB] [Success] Authentication complete User: %s password: %s', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr, login, password)
+            if conn:
+                app.logger.info('[%s] [INFO] from %s [CONNECT|AUTH] [MARIADB] [Success] Authentication complete User: %s password: %s', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr, login, password)
+            else:
+                app.logger.error('[%s] [ERROR] from %s [CONNECT|AUTH] [MARIADB] [Failed] Authentication failed User: %s password: %s', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr, login, password)
             cur = conn.cursor()
             select_db = f'USE weapons;'
             cur.execute(select_db)
@@ -118,9 +115,6 @@ def interactwithdb():
             elements = cur.fetchall()
             cur.close()
             return render_template ('successlogin.html', elements=elements)
-            # except:
-            #     app.logger.error('[%s] [ERROR] from %s [CONNECT|AUTH] [MARIADB] [Failed] Authentication failed User: %s password: %s', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr, login, password)
-            #     return ("Oppps")
             
         elif chk is not None:
             
@@ -134,14 +128,12 @@ def interactwithdb():
                 port=3306,
                 database='weapons'
             )
-            app.logger.info('[%s] [INFO] from %s [CONNECT|CHECK] [MARIADB] [Success] connected to mariadb', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr)
-            #    app.logger.error('[%s] [ERROR] from %s [CONNECT|CHECK] [MARIADB] [Failed] can\'t connect to mariadb', datetime.now().strftime('%Y-%m-%d %H:%M:%S'), request.remote_addr)
             cur = conn.cursor()
             cur.execute("select * from ship_weapon where zavod_name=%(fn_check)s", {'fn_check': fn_check})
             app.logger.info('[%s] [INFO] from %s req:/dblogin [CHECK] [MARIADB] [Success] Check record: factory_name <%s> ', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, fn_check)
             elements = cur.fetchall()
             cur.close()
-             #   app.logger.error('[%s] [ERROR] from %s req:/dblogin [CHECK] [MARIADB] [Failed] Failed to check record: factory_name <%s>', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, fn_check)
+            # app.logger.error('[%s] [ERROR] from %s req:/dblogin [CHECK] [MARIADB] [Failed] Failed to check record: factory_name <%s>', datetime.now().strftime('%Y-%m-%d %H:%M:%S'),request.remote_addr, fn_check)
             
             return render_template ('successlogin.html', elements=elements)
 

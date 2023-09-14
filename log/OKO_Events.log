@@ -1,0 +1,134 @@
+[2023-09-14 07:22:25,719] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > Exception on /dblogin [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 106, in interactwithdb
+    conn = mariadb.connect(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/__init__.py", line 146, in connect
+    connection = connectionclass(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/connections.py", line 85, in __init__
+    super().__init__(*args, **kwargs)
+mariadb.OperationalError: Can't connect to server on '172.30.0.3' (115)
+[2023-09-14 07:23:01,694] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:23:01] [INFO] from 172.30.0.1 [CONNECT|AUTH] [MARIADB] [Success] Authentication complete User: ctf password: try_hack_me
+[2023-09-14 07:23:11,425] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > Exception on /dblogin [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 106, in interactwithdb
+    conn = mariadb.connect(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/__init__.py", line 146, in connect
+    connection = connectionclass(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/connections.py", line 85, in __init__
+    super().__init__(*args, **kwargs)
+mariadb.OperationalError: Access denied for user 'ctf'@'172.30.0.2' (using password: YES)
+[2023-09-14 07:23:42,072] [INFO] from None req: None > Worker exiting (pid: 10)
+[2023-09-14 07:25:40,982] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > Exception on /dblogin [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 106, in interactwithdb
+    conn = mariadb.connect(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/__init__.py", line 146, in connect
+    connection = connectionclass(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/connections.py", line 85, in __init__
+    super().__init__(*args, **kwargs)
+mariadb.OperationalError: Access denied for user 'ctf'@'172.30.0.2' (using password: YES)
+[2023-09-14 07:25:55,337] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:25:55] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:25:55,430] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > Exception on /dblogin [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 92, in interactwithdb
+    rcync = subprocess.run(["rcync"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.11/subprocess.py", line 1950, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'rcync'
+[2023-09-14 07:28:01,341] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:28:01] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:28:01,430] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:28:01] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <test> serial number <test>
+[2023-09-14 07:28:16,005] [INFO] from None req: None > Worker exiting (pid: 9)
+[2023-09-14 07:29:01,395] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:29:01] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:29:01,481] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:29:01] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <te> serial number <te>
+[2023-09-14 07:33:02,728] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:02] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:33:02,814] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:02] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <te> serial number <te>
+[2023-09-14 07:33:42,746] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:42] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:33:42,983] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:42] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <te> serial number <te>
+[2023-09-14 07:33:46,168] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:46] [INFO] from 172.30.0.1 [CONNECT|INSERT] [MARIADB] [Success] connected to mariadb
+[2023-09-14 07:33:46,198] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:33:46] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <te> serial number <te>
+[2023-09-14 07:34:14,216] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > Exception on /dblogin [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app.py", line 106, in interactwithdb
+    conn = mariadb.connect(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/__init__.py", line 146, in connect
+    connection = connectionclass(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/mariadb/connections.py", line 85, in __init__
+    super().__init__(*args, **kwargs)
+mariadb.OperationalError: Access denied for user 'cr'@'172.30.0.2' (using password: YES)
+[2023-09-14 07:44:51,795] [INFO] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:44:51] [INFO] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Success] Add record: weapon name <e> serial number <te>
+[2023-09-14 07:44:51,799] [ERROR] from 172.30.0.1 req: http://localhost:5000/dblogin > [2023-09-14 07:44:51] [ERROR] from 172.30.0.1 req:/dblogin [INSERT] [MARIADB] [Failed] Failed to add record: weapon name <e> serial number <te>
+[2023-09-14 07:45:28,957] [INFO] from None req: None > Worker exiting (pid: 9)
